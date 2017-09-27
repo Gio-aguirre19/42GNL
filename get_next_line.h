@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaguirre <gio_aguirre19@yahoo.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 22:49:51 by gaguirre          #+#    #+#             */
-/*   Updated: 2017/06/25 16:29:14 by gaguirre         ###   ########.fr       */
+/*   Created: 2017/09/23 19:54:22 by gaguirre          #+#    #+#             */
+/*   Updated: 2017/09/26 21:10:35 by gaguirre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, const char *src)
-{
-	char *start;
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-	start = dest;
-	while (*dest)
-		dest++;
-	while (*src)
-		*dest++ = *src++;
-	*dest++ = '\0';
-	return (start);
-}
+# include <unistd.h>
+# include "./libft/libft.h"
+
+# define BUFF_SIZE 8
+# define MAX_FD 4096
+
+int get_next_line(int const fd, char **line);
+
+#endif
