@@ -5,33 +5,46 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gaguirre <gio_aguirre19@yahoo.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/06/09 21:15:32 by gaguirre          #+#    #+#              #
-#    Updated: 2017/09/26 19:34:49 by gaguirre         ###   ########.fr        #
+#    Created: 2017/09/28 19:30:20 by gaguirre          #+#    #+#              #
+#    Updated: 2017/09/28 19:36:59 by gaguirre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC = ft_strdup.c ft_strjoin.c /
-			ft_strlen.c
-			ft_strsub.c
+COMPILE = gcc
 
-FLAGS = -Wall -Wextra -Werror -I .
+C = -c
 
-BIN = $(SRC:.c=.o)
+FLAGS =  -Wall -Wextra -Werror
+
+S = srcs/
+
+SRCS = ft_strsub.c ft_strlen.c ft_strdup.c ft_strjoin.c ft_bzero.c ft_strnew.c
+
+OBJECTS =    ft_strsub.o ft_strlen.o ft_strdup.o ft_strjoin.o ft_bzero.o ft_strnew.o
+
+TEST_OUTFILE = -o test
+
+TEST_MAIN = main.c
+
+INCLUDES = -I./
 
 all: $(NAME)
 
-$(NAME): $(BIN)
-		@ar rc $@ $^
+$(NAME):
+	$(COMPILE) $(C) $(FLAGS) $(SRCS) $(INCLUDES)
+	ar rc $(NAME) $(OBJECTS)
+	ranlib $(NAME)
 
-%.o: %.c
-		@gcc -c $(FLAGS) libft.h $< -o $@
+test:
+	$(COMPILE) $(SRCS) $(TEST_MAIN) $(INCLUDES) $(TEST_OUTFILE)
 
 clean:
-		@rm -rf $(BIN)
+	/bin/rm -f $(OBJECTS)
 
 fclean: clean
-		@rm -rf $(NAME)
+	/bin/rm -f $(NAME)
+	/bin/rm -f test
 
 re: fclean all

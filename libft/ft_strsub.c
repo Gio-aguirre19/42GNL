@@ -5,30 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaguirre <gio_aguirre19@yahoo.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/25 13:30:29 by gaguirre          #+#    #+#             */
-/*   Updated: 2017/09/25 19:40:33 by gaguirre         ###   ########.fr       */
+/*   Created: 2017/09/28 19:31:15 by gaguirre          #+#    #+#             */
+/*   Updated: 2017/09/28 19:31:17 by gaguirre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	char	*sub;
+	char *substring;
 
-	j = 0;
-	i = start;
-	sub = (char *)malloc(sizeof(*sub) * len + 1);
-	if (!s || !sub)
+	substring = (char *)malloc(sizeof(char) * (len + 1));
+	if (!substring)
 		return (0);
-	while (s[i] && j < len)
+	if (s)
 	{
-		sub[j] = s[i];
-		i++;
-		j++;
+		substring[len] = '\0';
+		if (ft_strlen(s) == 0)
+			return (substring);
+		while (--len + 1 > 0)
+			substring[len] = s[start + len];
 	}
-	sub[j] = '\0';
-	return (sub);
+	return (substring);
 }

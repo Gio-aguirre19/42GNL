@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaguirre <gio_aguirre19@yahoo.com>         +#+  +:+       +#+        */
+/*   By: gaguirre <gaguirre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/28 19:31:02 by gaguirre          #+#    #+#             */
-/*   Updated: 2017/09/28 19:31:04 by gaguirre         ###   ########.fr       */
+/*   Created: 2017/06/25 13:17:40 by gaguirre          #+#    #+#             */
+/*   Updated: 2017/07/01 20:25:31 by gaguirre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-size_t	ft_strlen(char const *str)
+char	*ft_strnew(size_t size)
 {
-	size_t	curr;
+	char *str;
 
-	curr = 0;
-	while (str[curr])
-		curr++;
-	return (curr);
+	if (!(str = (char *)malloc(sizeof(char) * size + 1)))
+		return (NULL);
+	ft_bzero(str, size + 1);
+	return (str);
 }
